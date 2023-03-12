@@ -1,0 +1,418 @@
+//
+// _menu.scss
+// 
+
+.metismenu {
+    margin: 0;
+}
+.metismenu li {
+    display: block;
+    width: 100%;
+}
+.metismenu .mm-collapse {
+    display: none;
+}
+.metismenu .mm-collapse:not(.mm-show) {
+    display: none;
+}
+.metismenu .mm-collapse.mm-show {
+    display: block
+}
+.metismenu .mm-collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    transition-timing-function: ease;
+    transition-duration: .35s;
+    transition-property: height, visibility;
+}
+.vertical-menu {
+    width: 240px;
+    z-index: 1001;
+    background: #ffffff;
+    bottom: 0;
+    margin-top: 0;
+    position: fixed;
+    top: 70px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+}
+.main-content {
+    margin-left: 240px;
+    overflow: hidden;
+}
+.main-content .content {
+    padding: 0 15px 10px 15px;
+    margin-top: 70px;
+}
+#sidebar-menu {
+    padding: 10px 0 30px 0;
+}
+#sidebar-menu .mm-active .has-arrow:after {
+    content: "\F0140";
+}
+#sidebar-menu ul li a.mm-active{
+    background-color:#f9f9f9;
+}
+#sidebar-menu .has-arrow:after {
+    content: "\F0142";
+    font-family: 'Material Design Icons';
+    display: block;
+    float: right;
+    transition: transform .2s;
+    font-size: 1rem;
+}
+#sidebar-menu ul li a {
+    display: block;
+    padding: 13px 20px;
+    font-family: 'nunito', sans-serif;
+    color: #545a6d;
+    position: relative;
+    font-size: 15px;
+    transition: all .4s;
+    text-decoration: none!important;
+}
+#sidebar-menu ul li a i {
+    display: inline-block;
+    min-width: 1.75rem;
+    font-size: 1rem;
+    line-height: 1.40625rem;
+    vertical-align: middle;
+    transition: all .4s;
+}
+#sidebar-menu ul li a:hover {
+    color: #383c40;
+}
+#sidebar-menu ul li a:hover i {
+    color: #383c40;
+}
+#sidebar-menu ul li .badge {
+    margin-top: 4px;
+}
+#sidebar-menu ul li ul.sub-menu {
+    padding: 0;
+}
+#sidebar-menu ul li ul.sub-menu li a {
+    padding: .4rem 1.5rem .4rem 3.2rem;
+    font-size: 14px;
+    color: #545a6d;
+}
+#sidebar-menu ul li ul.sub-menu li ul.sub-menu {
+    padding: 0;
+}
+#sidebar-menu ul li ul.sub-menu li ul.sub-menu li a {
+    padding: .4rem 1.5rem .4rem 4.5rem;
+    font-size: 13.5px;
+}
+.menu-title {
+    padding: 12px 20px !important;
+    letter-spacing: .05em;
+    pointer-events: none;
+    cursor: default;
+    color: #545a6d;
+    font-size: 13px;
+    font-weight: 500;
+}
+.mm-active {
+    color: #f15a69 !important;
+}
+.mm-active .active {
+    color: #f15a69 !important;        
+}
+.mm-active .active i {
+    color: #f15a69 !important;
+}
+.mm-active i {
+    color: #f15a69 !important;
+}
+@media (max-width: 992px) {
+    .vertical-menu {
+        display: none;
+    }
+    .main-content {
+        margin-left: 0 !important;
+    }
+    body.sidebar-enable .vertical-menu {
+        display: block;
+    }
+}
+
+// Enlarge menu
+.vertical-collpsed .main-content {
+    margin-left: 70px;
+}
+.vertical-collpsed .navbar-brand-box {
+    width: 70px !important;
+}
+.vertical-collpsed .logo span.logo-lg {
+    display: none;
+}
+.vertical-collpsed .logo span.logo-sm {
+    display: block;
+}
+// Side menu
+.vertical-collpsed .vertical-menu {
+    position: absolute;
+    width: 70px !important;
+    z-index: 5;
+}
+.vertical-collpsed .vertical-menu .simplebar-mask,
+.vertical-collpsed .vertical-menu .simplebar-content-wrapper {
+    overflow: visible !important;
+}
+.vertical-collpsed .vertical-menu .simplebar-scrollbar {
+    display: none !important;
+}
+.vertical-collpsed .vertical-menu .simplebar-offset {
+    bottom: 0 !important;
+}
+// Sidebar Menu
+.vertical-collpsed .vertical-menu #sidebar-menu .menu-title, .vertical-collpsed .vertical-menu #sidebar-menu .badge, .vertical-collpsed .vertical-menu #sidebar-menu .collapse.in {
+    display: none !important;
+}
+.vertical-collpsed .vertical-menu #sidebar-menu .nav.collapse {
+    height: inherit !important;
+}
+.vertical-collpsed .vertical-menu #sidebar-menu .has-arrow &:after {
+    display: none;
+}
+.vertical-collpsed .vertical-menu #sidebar-menu ul li {
+    position: relative;
+    white-space: nowrap;
+}
+.vertical-collpsed .vertical-menu #sidebar-menu ul li a {
+    padding: 15px 20px;
+    min-height: 55px;
+    transition: none;
+}                      
+.vertical-collpsed .vertical-menu #sidebar-menu ul li a:hover,
+.vertical-collpsed .vertical-menu #sidebar-menu ul li a:active,
+.vertical-collpsed .vertical-menu #sidebar-menu ul li a:focus {
+    color: #383c40;
+}
+.vertical-collpsed .vertical-menu #sidebar-menu ul li a i {
+    font-size: 1.20rem;
+    margin-left: 4px;
+}
+.vertical-collpsed .vertical-menu #sidebar-menu ul li a span {
+    display: none;
+    padding-left: 25px;
+}
+.vertical-collpsed .vertical-menu #sidebar-menu ul li:hover a {
+    position: relative;
+    width: calc(190px + #{70px});
+    color: #f15a69;
+    background-color: darken(#ffffff, 4%);
+    transition: none;
+}
+.vertical-collpsed .vertical-menu #sidebar-menu ul li:hover a i{
+    color: #f15a69;
+}
+.vertical-collpsed .vertical-menu #sidebar-menu ul li:hover a span {
+    display: inline;
+}
+.vertical-collpsed .vertical-menu #sidebar-menu ul li:hover ul {
+    display: block;
+    left: 70px;
+    position: absolute;
+    width: 190px;
+    height: auto !important;
+    box-shadow: 3px 5px 10px 0 rgba(54, 61, 71, .1);
+}
+.vertical-collpsed .vertical-menu #sidebar-menu ul li:hover ul ul {
+    box-shadow: 3px 5px 10px 0 rgba(54, 61, 71, .1);
+}
+.vertical-collpsed .vertical-menu #sidebar-menu ul li:hover ul a {
+    box-shadow: none;
+    padding: 8px 20px;
+    position: relative;
+    width: 190px;
+    z-index: 6;
+    color: #545a6d;
+}
+.vertical-collpsed .vertical-menu #sidebar-menu ul li:hover ul a:hover {
+    color: #383c40;
+}
+.vertical-collpsed .vertical-menu #sidebar-menu ul ul {
+    padding: 5px 0;
+    z-index: 9999;
+    display: none;
+    background-color: #ffffff;
+}
+.vertical-collpsed .vertical-menu #sidebar-menu ul ul li:hover ul {
+    display: block;
+    left: 190px;
+    height: auto !important;
+    margin-top: -36px;
+    position: absolute;
+    width: 190px;
+}
+.vertical-collpsed .vertical-menu #sidebar-menu ul ul li:hover a span.pull-right {
+    position: absolute;
+    right: 20px;
+    top: 12px;
+    transform: rotate(270deg);
+}
+.vertical-collpsed .vertical-menu #sidebar-menu ul ul li.active a {
+    color: #f6f6f6;
+}
+body[data-sidebar="dark"] .vertical-menu {
+    background: radial-gradient(at 50% -20%, #eb1429, #0a1832) fixed;
+}
+body[data-sidebar="dark"] #sidebar-menu ul li a {
+    color: rgba(255, 255, 255, 0.5);   
+}
+body[data-sidebar="dark"] #sidebar-menu ul li a i {
+    color: rgba(255, 255, 255, 0.5);
+} 
+body[data-sidebar="dark"] #sidebar-menu ul li a:hover {
+    color: #ffffff;
+}
+body[data-sidebar="dark"] #sidebar-menu ul li a:hover i {
+    color: #ffffff;
+}
+body[data-sidebar="dark"] #sidebar-menu ul li ul.sub-menu li a {
+    color: rgba(255, 255, 255, 0.5);
+    background: transparent;
+    box-shadow: none;
+}
+body[data-sidebar="dark"] #sidebar-menu ul li ul.sub-menu li a:hover {
+    color: #ffffff;
+}
+body[data-sidebar="dark"] #sidebar-menu ul li a .mm-active{
+    background-color: rgba(10, 24, 50, 0.1);
+}
+// Enlarge menu
+body[data-sidebar="dark"] .vertical-collpsed {
+    min-height: 1200px;
+}
+// Side menu
+body[data-sidebar="dark"] .vertical-collpsed .vertical-menu #sidebar-menu > ul > li:hover > a {
+    background: radial-gradient(at 50% -20%, #eb1429, #0a1832) fixed;
+    color: #ffffff;
+}
+body[data-sidebar="dark"] .vertical-collpsed .vertical-menu #sidebar-menu > ul > li:hover > a i{
+    color: #ffffff;
+}
+body[data-sidebar="dark"] .vertical-collpsed .vertical-menu #sidebar-menu > ul > li:hover > ul a{
+    color: #545a6d; 
+}
+body[data-sidebar="dark"] .vertical-collpsed .vertical-menu #sidebar-menu > ul > li:hover > ul a:hover{
+    color:#ffffff;
+}
+body[data-sidebar="dark"] .vertical-collpsed .vertical-menu #sidebar-menu > ul > li:hover > ul >li a:hover {
+    color: #f15a69;
+}
+body[data-sidebar="dark"] .vertical-collpsed .vertical-menu #sidebar-menu > ul > li:hover > ul >li .mm-active .active{
+    color: #f15a69 !important;
+}
+body[data-sidebar="dark"] .vertical-collpsed .vertical-menu #sidebar-menu > ul > li:hover > ul >li .mm-active .active i{
+    color: #f15a69;
+}
+body[data-sidebar="dark"] .vertical-collpsed .vertical-menu #sidebar-menu > ul ul{
+    background: #fff;
+}                  
+body[data-sidebar="dark"] .vertical-collpsed .vertical-menu #sidebar-menu ul li .mm-active .active{
+    color: #f15a69;
+}
+body[data-sidebar="dark"] .vertical-collpsed .vertical-menu #sidebar-menu ul li .mm-active .active i{
+    color: #f15a69;
+}       
+body[data-sidebar="dark"] .mm-active {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+body[data-sidebar="dark"] .mm-active > i {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+body[data-sidebar="dark"] .mm-active .active {
+    color: rgba(255, 255, 255, 0.8) !important;
+    background-color: $sidebar-dark-menu-item-active-bg;
+}
+body[data-sidebar="dark"] .mm-active .active i {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+body[data-sidebar="dark"] .menu-title {
+    color: rgba(255, 255, 255, 0.5);
+}
+body[data-layout="horizontal"] .main-content {
+    margin-left: 0 !important;
+    overflow: inherit;
+}
+// Compact Sidebar
+body[data-sidebar-size="small"] .navbar-brand-box{
+        width: 160px;
+    }
+body[data-sidebar-size="small"] .vertical-menu{
+    width: 160px;
+    text-align: center;
+}
+body[data-sidebar-size="small"] .main-content {
+    margin-left: 160px;
+}
+body[data-sidebar-size="small"] .footer {
+    left: 160px;
+}
+body[data-sidebar-size="small"] .has-arrow:after,
+body[data-sidebar-size="small"] .badge {
+    display: none !important;
+}
+body[data-sidebar-size="small"] #sidebar-menu ul li .menu-title{
+    background-color: radial-gradient(at 50% -20%, #eb1429, #0a1832) fixed;
+}
+body[data-sidebar-size="small"] #sidebar-menu ul li a i{
+    display: block;
+}
+body[data-sidebar-size="small"] #sidebar-menu ul li ul.sub-menu li a{
+    padding-left: 1.5rem;
+}
+body[data-sidebar-size="small"] .vertical-collpsed .main-content {
+    margin-left: 70px;
+}
+body[data-sidebar-size="small"] .vertical-collpsed .vertical-menu #sidebar-menu{
+    text-align: left;
+}
+body[data-sidebar-size="small"] .vertical-collpsed .vertical-menu #sidebar-menu >ul >li >a i{
+    display: inline-block;
+}                      
+body[data-sidebar-size="small"] .vertical-collpsed .footer {
+    left: 70px;
+}
+// colored sidebar
+body[data-sidebar="colored"] .vertical-menu{
+    background-color: #f15a69;
+}
+body[data-sidebar="colored"] .navbar-brand-box{
+    background-color: #f15a69;
+}
+body[data-sidebar="colored"] .navbar-brand-box .logo-dark{
+    display: none;
+}
+body[data-sidebar="colored"] .navbar-brand-box .logo-light{
+    display: block;
+}
+body[data-sidebar="colored"] .mm-active {
+    color: #fff !important;
+}
+body[data-sidebar="colored"] .mm-active > i, .active {
+    color: #fff !important;
+}
+body[data-sidebar="colored"] #sidebar-menu ul li .menu-title{
+    color: rgba(#fff, 0.6);
+}
+body[data-sidebar="colored"] #sidebar-menu ul li a{
+    color: rgba(#fff, 0.5);
+}
+body[data-sidebar="colored"] #sidebar-menu ul li a i{
+    color: rgba(#fff, 0.5);
+}
+body[data-sidebar="colored"] #sidebar-menu ul li a .waves-effect .waves-ripple {
+    background: rgba(#fff, 0.1);
+}
+body[data-sidebar="colored"] #sidebar-menu ul li ul.sub-menu li a{
+    color: rgba(#fff,.4);
+}
+body[data-sidebar="colored"] .vertical-collpsed .vertical-menu #sidebar-menu >ul >li:hover>a{
+    background-color: lighten(#f15a69, 2%);
+}
+body[data-sidebar="colored"] .vertical-collpsed .vertical-menu #sidebar-menu ul li .mm-active .active{
+    color: #f15a69 !important;
+}

@@ -1,0 +1,86 @@
+//
+// Form editors.scss
+//
+
+// Summernote
+
+.note-editor{
+  &.note-frame {
+    border: 1px solid $input-border-color;
+    box-shadow: none;
+    margin: 0;
+
+    .note-statusbar {
+      background-color: $light;
+      border-top: 1px solid $light;
+    }
+
+    .note-editing-area{
+      .note-editable, .note-codable {
+        border: none;
+        color: $gray-500;
+        background-color: transparent;
+      }
+    }
+
+  }
+}
+
+.note-btn-group{
+  .note-btn{
+    background-color: $light !important;
+    border-color: $light !important;
+  }
+}
+
+.note-status-output {
+  display: none;
+}
+
+.note-editable {
+
+  p {
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.note-popover .popover-content .note-color .dropdown-menu,
+.card-header.note-toolbar .note-color .dropdown-menu {
+    min-width: 344px;
+}
+
+.note-popover{
+  border-color: $light;
+}
+
+.note-popover .popover-content, 
+.card-header.note-toolbar{
+  background-color: $light;
+}
+
+.note-toolbar {
+  padding: 0 0 5px 5px !important;
+}
+
+.note-popover .popover-content .note-color .dropdown-menu,
+.card-header.note-toolbar .note-color .dropdown-menu {
+    min-width: 344px;
+}
+
+.note-popover{
+  border-color: $gray-200;
+}
+
+.note-toolbar{
+  &.card-header{
+    padding-bottom: 0 !important;
+  }
+
+  .note-btn-group{
+    margin-bottom: 5px;
+  }
+}
+
+

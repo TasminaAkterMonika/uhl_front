@@ -1,0 +1,57 @@
+//
+// components-rtl.scss
+//
+
+
+/* Activity */
+.activity-feed {
+  .feed-item {
+    padding-right: 30px;
+    border-right: 2px solid $gray-200;
+    padding-left: 0px;
+    border-left: none;
+    &::after {
+      right: -6px;
+      left: 0;
+    }
+  }
+}
+
+
+// dropdown
+
+.dropdown-megamenu{
+  &.show{
+    left: 20px!important;
+  }
+}
+
+
+// icons
+
+.icon-list-demo{
+  i{
+    margin-left: 12px;
+    margin-right: 0;
+  }
+}
+
+
+
+
+// Invoice
+
+@media print {
+  .content-page,
+  .content,
+  body {
+      margin-right: 0;
+  }
+}
+
+// Demos button 
+.demos-show-btn {
+  left: 0;
+  right: auto;
+  border-radius: 0 6px 6px 0;
+}
