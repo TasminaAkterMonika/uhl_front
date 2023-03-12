@@ -1,0 +1,46 @@
+// 
+// _buttons.scss
+// 
+
+button,a {
+  outline: none !important;
+}
+
+
+// Rounded Buttons
+.btn-rounded {
+  border-radius: 30px;
+}
+
+.btn-dark{
+  color: $gray-200 !important;
+}
+
+// Button with icon label
+
+.btn-icon{
+  position: relative;
+
+  .btn-icon-label{
+    margin: -.55rem .9rem -.55rem -.9rem;
+    padding: .6rem .9rem;
+  }
+
+  &::before{
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 38%;
+    background-color: rgba($white, 0.15);
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+    transition: all 0.4s;
+  }
+  &:hover{
+    &::before{
+      width: 100%;
+      clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 100% 100%, 0% 100%);
+    }
+  }
+}

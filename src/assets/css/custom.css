@@ -1,0 +1,123 @@
+.account-bg {
+    background: url(../images/tic-tac-toe.png);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+}
+.account-bg .font-size-18 {
+    font-size: 18px!important;
+}
+.account-bg .text-muted {
+    color: #707070!important;
+    font-family: nunito,sans-serif;
+}
+.account-bg .text-center {
+    text-align: center!important;
+}
+.account-bg label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+.account-bg input{
+    font-size: .875rem;
+}
+a{
+    text-decoration: none!important;
+}
+body{
+    font-family: Nunito,sans-serif;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+}
+.custom-control-label {
+    position: relative;
+    margin-bottom: 0;
+    vertical-align: top;
+}
+#sidebar-menu ul li .badge {
+    margin-top: 4px;
+}
+.float-right {
+    float: right!important;
+}
+.badge-success {
+    color: #fff;
+    background-color: #6fd088;
+}
+.badge-pill {
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    border-radius: 10rem;
+}
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+}
+.ml-1, .mx-1 {
+    margin-left: 0.25rem!important;
+}
+.btn-outline-primary {
+    color: #f15a69;
+    border-color: #f15a69;
+}
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.card {
+    border: none;
+    margin-bottom: 24px;
+    -webkit-box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+    background-color: #fdfdfd;
+}
+.text-muted {
+    color: #707070!important;
+}
+.mb-2, .my-2 {
+    margin-bottom: 0.5rem!important;
+}
+.card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+.text-info {
+    color: #4bbbce!important;
+}
+.text-purple {
+    color: #8862e0!important;
+}
+.text-primary {
+    color: #f15a69!important;
+}
+.text-danger {
+    color: #2f8ee0!important;
+}
+.mt-2, .my-2 {
+    margin-top: 0.5rem!important;
+}
