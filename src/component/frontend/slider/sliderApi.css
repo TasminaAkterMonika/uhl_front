@@ -25,3 +25,51 @@
     background-color:#fb6201;
     color: #fff;
 }
+
+
+
+
+
+
+
+@media  (min-width: 375px)  and (max-width: 540px) {
+    .mission h1{
+        text-align: center;
+
+    }
+    .zubaida p{
+        padding: 0px 30px 28px 30px;
+
+        }
+}
+
+
+@media  (min-width: 541px)  and (max-width: 768px) {
+    .mission h1{
+        text-align: center;
+    }
+    .zubaida p{
+        padding: 0px 30px 28px 30px;
+
+        }
+}
+
+@media  (min-width: 769px)  and (max-width: 1024px) {
+    .mission h1{
+        text-align: center;     
+    }   
+    .zubaida p{
+        padding: 0px 30px 28px 30px;
+
+        }
+    
+    
+}
+
+@media  (min-width: 1025px)  and (max-width: 2000px) {
+     .mission {
+
+        font-size: 57px
+
+    }
+}

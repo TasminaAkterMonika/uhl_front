@@ -13,7 +13,7 @@ import "../../component/admin/MultipleReactQuillEditor";
 import { MultipleReactQuillEditor } from "../../component/admin/MultipleReactQuillEditor";
 import SEO from "../../component/Seo";
 
-const saveDepartment = (data,department_desc_one, department_desc_two, department_desc_three, department_desc_four, department_desc_five,department_image,department_banner_image) => {
+const saveDepartment = (data,department_desc_one, department_desc_two, department_desc_three, department_desc_four, department_desc_five,department_image) => {
     let formdata = new FormData();
     formdata.append('department_desc_one', department_desc_one);
     formdata.append('department_desc_two', department_desc_two);
@@ -21,7 +21,6 @@ const saveDepartment = (data,department_desc_one, department_desc_two, departmen
     formdata.append('department_desc_four', department_desc_four);
     formdata.append('department_desc_five', department_desc_five);
     formdata.append('department_image', department_image);
-    formdata.append('department_banner_image', department_banner_image);
     return new Promise((resolve, reject) => {
         const req = scAxiosAdmin.post('/department/createdepartment', formdata, {
             headers: {
@@ -67,7 +66,6 @@ class AddDepartment extends Component {
         department_desc_four:'',
         department_desc_five:'',
         department_image:'',
-        department_banner_image:'',
         department_id:''
     }
     validateForm() {
@@ -82,14 +80,10 @@ class AddDepartment extends Component {
             formIsValid = false;
             errors["department_id"] = "*Please enter your department id.";
         }
-        /*if (!this.state.department_image) {
+        if (!this.state.department_image) {
             formIsValid = false;
-            errors["department_image"] = "*Please choose your department icon.";
+            errors["department_image"] = "*Please enter your department image.";
         }
-        if (!this.state.department_banner_image) {
-            formIsValid = false;
-            errors["department_banner_image"] = "*Please choose your department banner image.";
-        }*/
         
         this.setState({
             errors: errors
@@ -153,11 +147,6 @@ class AddDepartment extends Component {
             department_image: file[0],
         })
     }
-    onBannerFileChange (file) {
-        this.setState({ 
-            department_banner_image: file[0],
-        })
-    }
     handleSubmit = event => {
         event.preventDefault();
         if (this.validateForm()) {
@@ -173,7 +162,7 @@ class AddDepartment extends Component {
                 department_desc_four: this.state.department_desc_four,
                 department_desc_five: this.state.department_desc_five,*/
             }
-            saveDepartment(data, this.state.department_desc_one, this.state.department_desc_two, this.state.department_desc_three, this.state.department_desc_four, this.state.department_desc_five,this.state.department_image,this.state.department_banner_image)
+            saveDepartment(data, this.state.department_desc_one, this.state.department_desc_two, this.state.department_desc_three, this.state.department_desc_four, this.state.department_desc_five,this.state.department_image)
             .then(res => {
                 toast.success(res.message, {
                     position: toast.POSITION.TOP_RIGHT
@@ -345,14 +334,6 @@ class AddDepartment extends Component {
                                                             <label>Department Icon</label>
                                                             <input type="file" className="form-control" name="department_image" id="department_image" onChange={ (event) => this.onFileChange(event.target.files) } accept="jpg,png"/>
                                                             
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-sm-6">
-                                                        <div className="form-group">
-                                                            <label>Department Banner Image</label>
-                                                            <input type="file" className="form-control" name="department_banner_image" id="department_banner_image" onChange={ (event) => this.onBannerFileChange(event.target.files) } accept="jpg,png"/>                                                          
                                                         </div>
                                                     </div>
                                                 </div>

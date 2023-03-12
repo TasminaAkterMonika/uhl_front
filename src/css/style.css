@@ -64,7 +64,7 @@ img{max-width: 100%;}
 }
 .banner-part {
     /*background-image: url(../images/banner-profile-1.png);*/
-    background-image: url(../images/banner-profile-1.jpeg);
+    background-image: url(../images/background.png);
     padding: 0 0 0 0;
     background-size: cover;
     background-repeat: no-repeat;
@@ -606,6 +606,8 @@ a#black-btn {
     background: #eee;
     border-radius: 5px;
     border: solid 1px #bdbdcc8c;
+    
+    
 }
 a.btn-links.color-check {
     background: #e3e2e1!important;
@@ -758,10 +760,10 @@ div#tab1 li.active a {
     font-size: 12px;
 }
 .banner-part h1 {
-    font-size: 3.4rem;
+    font-size: 3.4rem !important;
 }
 .excellence-part p { 
-    font-size: 12px;
+    font-size: 12px!important;
 }
 .excellence-part i { 
     font-size: 19px;
@@ -1220,6 +1222,7 @@ button.dropdown-toggle.make-btn i {
 .doctor-list img {
     border-radius: 6px;
     margin-left: 2px;
+    max-height: 100%!important;
 }
 
 .drop-gender .center-of-excellence.hide-arrow {
@@ -1659,11 +1662,17 @@ div#dr {
 }
 .banner-part h1 {
     text-align: center; 
+    font-size: 42px!important;
 }
 
 
 }
+@media (max-width:990px) { 
+.banner-part h1 {
 
+    font-size:  42px!important;
+    
+}}
 
 @media (max-width:767px) { 
  .left-offcanvas a.btn-links { 
@@ -2837,6 +2846,7 @@ ul.making-time li i {
 }
 .zubaida {
     text-align: center !important;
+   padding:0px 30px 23px 30px;
 }
 .zubaida p {
     text-align: center !important;
@@ -3028,7 +3038,7 @@ select#age {
     margin-top: 26px;
 }
 .home_search_input_section{
-    box-shadow: 0px 0px 30px 0px rgb(0 0 0);
+    box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 31%);
     border-radius: 100px;
 }
 .home_header_dropdown .dropdown-menu{
@@ -3052,48 +3062,4 @@ select#age {
 }
 .home_header_dropdown .dropdown-menu .dropdown-item:hover{
     background: none;
-}
-#navbarSupportedContent.show {
-    display: unset !important;
-    margin-top: 10px;
-}
-.doctor-part-img {
-    padding: 0 0 10px 0 !important;
-}
-@media (max-width:991px) {
-    div#navbarSupportedContent { 
-        background: #fb6201;
-        padding: 13px !important;
-        border-radius: 10px;
-    }
-    ul.navbar-nav {
-        width: 100%;
-    }
-    .header-part li.login-white { 
-        width: 118px !important;
-        padding: 5px 5px 10px 3px !important;
-    }
-    .dropdown.home_header_dropdown {
-        margin: -6px  0 -12px -5px;
-    }
-    #doctor-profile a.navbar-brand img {
-        width: 85px !important;
-    }
-    #header_search_keywords { 
-        margin-top: 0;
-    }
-    button.sub_header_menu_toggle {
-        position: absolute;
-        right: 0;
-        top: 0;
-        z-index: 999;
-            padding: 3px 7px;
-    }
-}
-.single_package_details_section ul{
-    padding: 0px;
-}
-.single_package_details_section ul li{
-    list-style: none;
-    display: initial;
 }

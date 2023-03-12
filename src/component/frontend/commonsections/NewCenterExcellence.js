@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { API_TOKEN_NAME,IMAGE_URL,SITE_URL} from '../../../constants';
+import { API_TOKEN_NAME, IMAGE_URL, SITE_URL } from '../../../constants';
 import { scAxiosAdmin } from '../../..';
 import icon2 from '../../../images/icon-2.png';
 import male from '../../../images/male.svg';
@@ -12,33 +12,33 @@ import Slider from "react-slick";
 const getAllDepartments = (data) => {
   return new Promise((resolve, reject) => {
     const req = scAxiosAdmin.request('/department/getdepartments', {
-        method: 'get',
-        headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem(API_TOKEN_NAME)
-        },
-        params: {
-            ...data
-        }
+      method: 'get',
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem(API_TOKEN_NAME)
+      },
+      params: {
+        ...data
+      }
     });
     req.then(res => resolve(res.data))
-        .catch(err => reject(err));
+      .catch(err => reject(err));
   });
 }
 const getAllBodyParts = (data) => {
   return new Promise((resolve, reject) => {
     const req = scAxiosAdmin.request('/bodypart/getallbodyparts', {
-        method: 'get',
-        headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem(API_TOKEN_NAME)
-        },
-        params: {
-            ...data
-        }
+      method: 'get',
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem(API_TOKEN_NAME)
+      },
+      params: {
+        ...data
+      }
     });
     req.then(res => resolve(res.data))
-        .catch(err => reject(err));
+      .catch(err => reject(err));
   });
 }
 const getAllTestimonials = (data) => {
@@ -46,38 +46,38 @@ const getAllTestimonials = (data) => {
     const req = scAxiosAdmin.request('/testimonials/getalltestimonials', {
       method: 'get',
       headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + localStorage.getItem(API_TOKEN_NAME)
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem(API_TOKEN_NAME)
       },
       params: {
-          ...data
+        ...data
       }
     });
     req.then(res => resolve(res.data))
-        .catch(err => reject(err));
+      .catch(err => reject(err));
   });
 }
 class NewCenterExcellence extends Component {
   state = {
     showMaleComponent: false,
     showFemaleComponent: false,
-    bodyTitle:'',
-    departments:[],
+    bodyTitle: '',
+    departments: [],
     testimonials: [],
-    bodyparts:[]
+    bodyparts: []
   }
   modalMaleBodySingleContentOpen(e, title) {
     this.setState({
       showMaleComponent: true,
-      bodyTitle:title,
+      bodyTitle: title,
     });
     $('.humanMaleBodyImg').hide();
     $('.humanFemaleBodyImg').show();
   }
-  modalFemaleBodySingleContentOpen(e, title){
+  modalFemaleBodySingleContentOpen(e, title) {
     this.setState({
       showFemaleComponent: true,
-      bodyTitle:title,
+      bodyTitle: title,
     });
     $('.humanMaleBodyImg').show();
     $('.humanFemaleBodyImg').hide();
@@ -100,67 +100,67 @@ class NewCenterExcellence extends Component {
   }
   refreshGetAllTestimonials = () => {
     getAllTestimonials()
-    .then(res => {
-      if(res.status===true){
+      .then(res => {
+        if (res.status === true) {
           var records = res.data.data;
           this.setState({ testimonials: records });
-      } else {
+        } else {
           this.setState({ testimonials: '' });
-      }
-    })
-    .catch(err => {
+        }
+      })
+      .catch(err => {
         console.log(err);
-    });
+      });
   }
   refreshDepartments = (event) => {
     getAllDepartments()
-    .then(res => {
-        if(res.status===true){
-            var records = res.data;
-            this.setState({ departments: records });
+      .then(res => {
+        if (res.status === true) {
+          var records = res.data;
+          this.setState({ departments: records });
         } else {
-            this.setState({ departments: '' });
+          this.setState({ departments: '' });
         }
-    })
-    .catch(err => {
+      })
+      .catch(err => {
         console.log(err);
-    });
+      });
   }
   refreshGetAllMaleBodyParts = (event) => {
     const data = {
       gender: 'male'
     }
     getAllBodyParts(data)
-    .then(res => {
-        if(res.status===true){
-            var records = res.data;
-            this.setState({ bodyparts: records });
+      .then(res => {
+        if (res.status === true) {
+          var records = res.data;
+          this.setState({ bodyparts: records });
         } else {
-            this.setState({ bodyparts: '' });
+          this.setState({ bodyparts: '' });
         }
-    })
-    .catch(err => {
+      })
+      .catch(err => {
         console.log(err);
-    });
+      });
   }
   refreshGetAllFemaleBodyParts = (event) => {
     const data = {
       gender: 'female'
     }
     getAllBodyParts(data)
-    .then(res => {
-        if(res.status===true){
-            var records = res.data;
-            this.setState({ bodyparts: records });
+      .then(res => {
+        if (res.status === true) {
+          var records = res.data;
+          this.setState({ bodyparts: records });
         } else {
-            this.setState({ bodyparts: '' });
+          this.setState({ bodyparts: '' });
         }
-    })
-    .catch(err => {
+      })
+      .catch(err => {
         console.log(err);
-    });
+      });
   }
-  componentDidMount(){
+  componentDidMount() {
     this.refreshDepartments();
     this.refreshGetAllTestimonials();
     this.refreshGetAllMaleBodyParts();
@@ -172,32 +172,32 @@ class NewCenterExcellence extends Component {
       speed: 500,
       slidesToShow: 6,
       slidesToScroll: 1,
-      autoplay:true,
+      autoplay: true,
       responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 4,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    } 
-  ]
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        }
+      ]
 
     };
     const testimonial_settings = {
@@ -206,36 +206,36 @@ class NewCenterExcellence extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay:true,
+      autoplay: true,
       responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: true,
-        dots: true
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    } 
-  ]
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
     };
     const FeMaleBodySVGReactElement = (
       <div className="structure ffff female">
-        <img src="https://www.fortishealthcare.com/revised/images/woman-structure.png" alt=""/>
+        <img src="https://www.fortishealthcare.com/revised/images/woman-structure.png" alt="" />
         <ul className="body_list left">
           <li className="eyeMpointer">
             <a><span className="txt">Eye</span><span className="dot"></span></a>
@@ -339,8 +339,8 @@ class NewCenterExcellence extends Component {
           </li>
           <li class="kidneysMpointer">
             <a
-              ><span class="txt">Kidneys</span
-              ><span class="dot"></span
+            ><span class="txt">Kidneys</span
+            ><span class="dot"></span
             ></a>
             <div class="right_txt">
               <p>Kidneys</p>
@@ -354,13 +354,13 @@ class NewCenterExcellence extends Component {
                   <li>
                     <a
                       href="https://www.fortishealthcare.com/india/clinical-speciality/kidney-transplant-590"
-                      >Kidney Transplant</a
+                    >Kidney Transplant</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/urology"
-                      >Urology</a
+                    >Urology</a
                     >
                   </li>
                 </ul>
@@ -369,8 +369,8 @@ class NewCenterExcellence extends Component {
           </li>
           <li class="lowerBackMpointer">
             <a
-              ><span class="txt">Lower Back</span
-              ><span class="dot"></span
+            ><span class="txt">Lower Back</span
+            ><span class="dot"></span
             ></a>
             <div class="right_txt">
               <p>Lower Back</p>
@@ -379,25 +379,25 @@ class NewCenterExcellence extends Component {
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/neurology"
-                      >Neurology</a
+                    >Neurology</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/orthopedics"
-                      >Orthopaedics</a
+                    >Orthopaedics</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.fortishealthcare.com/india/clinical-speciality/rheumatology-211"
-                      >Rheumatology</a
+                    >Rheumatology</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/orthopedics"
-                      >Spine Surgery</a
+                    >Spine Surgery</a
                     >
                   </li>
                 </ul>
@@ -406,8 +406,8 @@ class NewCenterExcellence extends Component {
           </li>
           <li class="reproductiveMpointer">
             <a
-              ><span class="txt">Reproductive systems</span
-              ><span class="dot"></span
+            ><span class="txt">Reproductive systems</span
+            ><span class="dot"></span
             ></a>
             <div class="right_txt">
               <p>Reproductive systems</p>
@@ -416,19 +416,19 @@ class NewCenterExcellence extends Component {
                   <li>
                     <a
                       href="https://www.fortishealthcare.com/india/clinical-speciality/gynaecology-oncology-253"
-                      >Gynecologic Oncology</a
+                    >Gynecologic Oncology</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.fortishealthcare.com/india/clinical-speciality/obstetrics-and-gynaecology-289"
-                      >Obstetrics &amp; Gynaecology</a
+                    >Obstetrics &amp; Gynaecology</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.fortishealthcare.com/india/clinical-speciality/infertility-medicine-ivf-285"
-                      >Infertility Medicine</a
+                    >Infertility Medicine</a
                     >
                   </li>
                 </ul>
@@ -437,7 +437,7 @@ class NewCenterExcellence extends Component {
           </li>
           <li class="thighMpointer">
             <a
-              ><span class="txt">Thigh</span><span class="dot"></span
+            ><span class="txt">Thigh</span><span class="dot"></span
             ></a>
             <div class="right_txt">
               <p>Thigh</p>
@@ -446,13 +446,13 @@ class NewCenterExcellence extends Component {
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/orthopedics"
-                      >Bone and Joint</a
+                    >Bone and Joint</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/orthopedics"
-                      >Orthopaedics</a
+                    >Orthopaedics</a
                     >
                   </li>
                 </ul>
@@ -461,7 +461,7 @@ class NewCenterExcellence extends Component {
           </li>
           <li class="footMpointer">
             <a
-              ><span class="txt">Foot</span><span class="dot"></span
+            ><span class="txt">Foot</span><span class="dot"></span
             ></a>
             <div class="right_txt">
               <p>Foot</p>
@@ -470,19 +470,19 @@ class NewCenterExcellence extends Component {
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/orthopedics"
-                      >Bone and Joint</a
+                    >Bone and Joint</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/orthopedics"
-                      >Orthopaedics</a
+                    >Orthopaedics</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/diabetes-endocrinology"
-                      >Podiatry/ Diabetic Foot Care</a
+                    >Podiatry/ Diabetic Foot Care</a
                     >
                   </li>
                 </ul>
@@ -493,7 +493,7 @@ class NewCenterExcellence extends Component {
         <ul class="body_list right">
           <li class="brainMpointer">
             <a
-              ><span class="txt">Brain</span><span class="dot"></span
+            ><span class="txt">Brain</span><span class="dot"></span
             ></a>
             <div class="right_txt">
               <p>Brain</p>
@@ -502,19 +502,19 @@ class NewCenterExcellence extends Component {
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/neurology"
-                      >Neurology</a
+                    >Neurology</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/neurosurgery"
-                      >Neurosurgery</a
+                    >Neurosurgery</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/psychiatry"
-                      >Psychiatry</a
+                    >Psychiatry</a
                     >
                   </li>
                 </ul>
@@ -523,7 +523,7 @@ class NewCenterExcellence extends Component {
           </li>
           <li class="noseMpointer">
             <a
-              ><span class="txt">Nose</span><span class="dot"></span
+            ><span class="txt">Nose</span><span class="dot"></span
             ></a>
             <div class="right_txt">
               <p>Nose</p>
@@ -532,7 +532,7 @@ class NewCenterExcellence extends Component {
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/ent--head-neck-surgery"
-                      >ENT (Ear, Nose, Throat)</a
+                    >ENT (Ear, Nose, Throat)</a
                     >
                   </li>
                 </ul>
@@ -541,7 +541,7 @@ class NewCenterExcellence extends Component {
           </li>
           <li class="heartMpointer">
             <a
-              ><span class="txt">Heart</span><span class="dot"></span
+            ><span class="txt">Heart</span><span class="dot"></span
             ></a>
             <div class="right_txt">
               <p>Heart</p>
@@ -550,57 +550,57 @@ class NewCenterExcellence extends Component {
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/cardiology"
-                      >Cardiac Sciences</a
+                    >Cardiac Sciences</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/cardiac-surgery"
-                      >Adult CTVS (Cardiothoracic and Vascular
+                    >Adult CTVS (Cardiothoracic and Vascular
                       Surgery)
                     </a>
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/cardiac-surgery"
-                      >Heart Transplant</a
+                    >Heart Transplant</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/cardiology"
-                      >Interventional Cardiology</a
+                    >Interventional Cardiology</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/cardiology"
-                      >Invasive Cardiology</a
+                    >Invasive Cardiology</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/cardiology"
-                      >Non-Invasive Cardiology</a
+                    >Non-Invasive Cardiology</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/cardiology"
-                      >Paediatrics Cardiac Sciences</a
+                    >Paediatrics Cardiac Sciences</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/cardiac-surgery"
-                      >Paediatrics CTVS (Cardiothoracic and Vascular
+                    >Paediatrics CTVS (Cardiothoracic and Vascular
                       Surgery)</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/vascular-surgery"
-                      >Vascular surgery</a
+                    >Vascular surgery</a
                     >
                   </li>
                 </ul>
@@ -609,7 +609,7 @@ class NewCenterExcellence extends Component {
           </li>
           <li class="lungMpointer">
             <a
-              ><span class="txt">Lungs</span><span class="dot"></span
+            ><span class="txt">Lungs</span><span class="dot"></span
             ></a>
             <div class="right_txt">
               <p>Lungs</p>
@@ -618,19 +618,19 @@ class NewCenterExcellence extends Component {
                   <li>
                     <a
                       href="https://www.fortishealthcare.com/india/clinical-speciality/paediatric-pulmonology-chest-medicine-2"
-                      >Paediatrics Pulmonology</a
+                    >Paediatrics Pulmonology</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.fortishealthcare.com/india/clinical-speciality/pulmonology-chest-sleep-medicine-248"
-                      >Pulmonology</a
+                    >Pulmonology</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.fortishealthcare.com/india/clinical-speciality/pulmonology-chest-sleep-medicine-248"
-                      >Respiratory Medicine</a
+                    >Respiratory Medicine</a
                     >
                   </li>
                 </ul>
@@ -639,7 +639,7 @@ class NewCenterExcellence extends Component {
           </li>
           <li class="elbowMpointer">
             <a
-              ><span class="txt">Elbow</span><span class="dot"></span
+            ><span class="txt">Elbow</span><span class="dot"></span
             ></a>
             <div class="right_txt">
               <p>Elbow</p>
@@ -648,25 +648,25 @@ class NewCenterExcellence extends Component {
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/orthopedics"
-                      >Arthroscopic Surgery</a
+                    >Arthroscopic Surgery</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/orthopedics"
-                      >Bone and Joint</a
+                    >Bone and Joint</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/orthopedics"
-                      >Orthopedics</a
+                    >Orthopedics</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.fortishealthcare.com/india/clinical-speciality/rheumatology-211"
-                      >Rheumatology</a
+                    >Rheumatology</a
                     >
                   </li>
                 </ul>
@@ -675,7 +675,7 @@ class NewCenterExcellence extends Component {
           </li>
           <li class="spineMpointer">
             <a
-              ><span class="txt">Spine</span><span class="dot"></span
+            ><span class="txt">Spine</span><span class="dot"></span
             ></a>
             <div class="right_txt">
               <p>Spine</p>
@@ -684,25 +684,25 @@ class NewCenterExcellence extends Component {
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/neurology"
-                      >Neurology</a
+                    >Neurology</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/orthopedics"
-                      >Orthopaedics
+                    >Orthopaedics
                     </a>
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/orthopedics"
-                      >Spine Surgery</a
+                    >Spine Surgery</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/general-surgery"
-                      >General Surgery</a
+                    >General Surgery</a
                     >
                   </li>
                 </ul>
@@ -711,8 +711,8 @@ class NewCenterExcellence extends Component {
           </li>
           <li class="stomachMpointer">
             <a
-              ><span class="txt">Stomach</span
-              ><span class="dot"></span
+            ><span class="txt">Stomach</span
+            ><span class="dot"></span
             ></a>
             <div class="right_txt">
               <p>Stomach</p>
@@ -721,25 +721,25 @@ class NewCenterExcellence extends Component {
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/gastroenterology-hepatology"
-                      >Bariatric Surgery</a
+                    >Bariatric Surgery</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/gastroenterology-hepatology"
-                      >GI Sciences</a
+                    >GI Sciences</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/laparoscopic-surgery"
-                      >Laparoscopic Surgery</a
+                    >Laparoscopic Surgery</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/general-surgery"
-                      >General Surgery</a
+                    >General Surgery</a
                     >
                   </li>
                 </ul>
@@ -748,7 +748,7 @@ class NewCenterExcellence extends Component {
           </li>
           <li class="hipMpointer">
             <a
-              ><span class="txt">Hip</span><span class="dot"></span
+            ><span class="txt">Hip</span><span class="dot"></span
             ></a>
             <div class="right_txt">
               <p>Hip</p>
@@ -757,19 +757,19 @@ class NewCenterExcellence extends Component {
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/orthopedics"
-                      >Bone and Joint</a
+                    >Bone and Joint</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/orthopedics"
-                      >Orthopaedics</a
+                    >Orthopaedics</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/gastroenterology-hepatology"
-                      >Rheumatology</a
+                    >Rheumatology</a
                     >
                   </li>
                 </ul>
@@ -778,7 +778,7 @@ class NewCenterExcellence extends Component {
           </li>
           <li class="skinMpointer">
             <a
-              ><span class="txt">Skin</span><span class="dot"></span
+            ><span class="txt">Skin</span><span class="dot"></span
             ></a>
             <div class="right_txt">
               <p>Skin</p>
@@ -787,7 +787,7 @@ class NewCenterExcellence extends Component {
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/dermatology"
-                      >Dermatology</a
+                    >Dermatology</a
                     >
                   </li>
                 </ul>
@@ -796,7 +796,7 @@ class NewCenterExcellence extends Component {
           </li>
           <li class="kneeMpointer">
             <a
-              ><span class="txt">Knee</span><span class="dot"></span
+            ><span class="txt">Knee</span><span class="dot"></span
             ></a>
             <div class="right_txt">
               <p>Knee</p>
@@ -805,13 +805,13 @@ class NewCenterExcellence extends Component {
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/orthopedics"
-                      >Bone and Joint</a
+                    >Bone and Joint</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/orthopedics"
-                      >Orthopaedics</a
+                    >Orthopaedics</a
                     >
                   </li>
                 </ul>
@@ -820,7 +820,7 @@ class NewCenterExcellence extends Component {
           </li>
           <li class="ankleMpointer">
             <a
-              ><span class="txt">Ankle</span><span class="dot"></span
+            ><span class="txt">Ankle</span><span class="dot"></span
             ></a>
             <div class="right_txt">
               <p>Ankle</p>
@@ -829,13 +829,13 @@ class NewCenterExcellence extends Component {
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/orthopedics"
-                      >Bone and Joint</a
+                    >Bone and Joint</a
                     >
                   </li>
                   <li>
                     <a
                       href="https://www.uhlbd.com/departments/orthopedics"
-                      >Orthopaedics</a
+                    >Orthopaedics</a
                     >
                   </li>
                 </ul>
@@ -847,7 +847,7 @@ class NewCenterExcellence extends Component {
     );
     const MaleBodySVGReactElement = (
       <div className="structure dddd male">
-        <img src="https://www.fortishealthcare.com/revised/images/man-structure.png" alt=""/>
+        <img src="https://www.fortishealthcare.com/revised/images/man-structure.png" alt="" />
         <ul className="body_list left">
           <li className="eyeMpointer">
             <a><span className="txt">Eye</span><span class="dot"></span></a>
@@ -1235,7 +1235,7 @@ class NewCenterExcellence extends Component {
         </ul>
       </div>
     );
-    return(
+    return (
       <div>
         <section className="center-of-excellence">
           <div className="container">
@@ -1244,28 +1244,28 @@ class NewCenterExcellence extends Component {
               <Slider {...settings}>
                 {this.state.departments.length > 0
                   ?
-                    this.state.departments.map(depart => {
-                      let department_name = depart.department_name;
-                      let new_department_name = department_name.replaceAll(' ', '-');
-                      return(
-                        <div className="col-sm-2 post-slide mb-3" key={depart.id}>
-                          <a href={SITE_URL+'/departments/'+new_department_name+'~'+depart.id} style={{"text-decoration": "none", "color": "#333333"}}>
-                            <div className="icon_sec" style={{"width":"120px"}}>
-                              {
-                                depart.image
+                  this.state.departments.map(depart => {
+                    let department_name = depart.department_name;
+                    let new_department_name = department_name.replaceAll(' ', '-');
+                    return (
+                      <div className="col-sm-2 post-slide mb-3" key={depart.id}>
+                        <a href={SITE_URL + '/department/' + new_department_name + '~' + depart.id} style={{ "text-decoration": "none", "color": "#333333" }}>
+                          <div className="icon_sec" style={{ "width": "120px" }}>
+                            {
+                              depart.image
                                 ?
-                                  <img src={IMAGE_URL+'DepartmentImage/'+depart.image} alt="avtars" style={{"border-radius":"30px"}}/>
+                                <img src={IMAGE_URL + 'DepartmentImage/' + depart.image} alt="avtars" style={{ "border-radius": "30px" }} />
                                 :
-                                  <img src={icon2} alt="avtars" width="100px" height="100px"/>
-                              }
-                              <p>{depart.department_name}</p>
-                            </div>
-                          </a>
-                        </div>
-                      )
-                    })
+                                <img src={icon2} alt="avtars" width="100px" height="100px" />
+                            }
+                            <p>{depart.department_name}</p>
+                          </div>
+                        </a>
+                      </div>
+                    )
+                  })
                   :
-                    ''
+                  ''
                 }
               </Slider>
             </div>
@@ -1273,15 +1273,15 @@ class NewCenterExcellence extends Component {
               <div id="tab2" className="tab">
                 <ul className="nav">
                   <li><a href="#tab1"><img src={male} alt="" /> Male</a></li>
-                  <li className="active"><a href="#tab2" className="border-red"><img src={female} alt="" /> Female</a></li> 
+                  <li className="active"><a href="#tab2" className="border-red"><img src={female} alt="" /> Female</a></li>
                 </ul>
                 <div className="text-areya">
-                  <div className="fullinner" style={{"backgroundImage": "url(https://www.fortishealthcare.com/revised/images/cs-bg.jpg)"}}>
+                  <div className="fullinner" style={{ "backgroundImage": "url(https://www.fortishealthcare.com/revised/images/cs-bg.jpg)" }}>
                     <div className="inner">
-                      <div className="row" style={{"maxWidth": "100%"}}>
+                      <div className="row" style={{ "maxWidth": "100%" }}>
                         {FeMaleBodySVGReactElement}
-                        { this.state.showFemaleComponent ?
-                          <NewSingleFemaleBodyContent bodyTitle={this.state.bodyTitle} showOldFemaleComponent={this.state.showFemaleComponent} onClickFemalePrevStep={this.onClickFemalePrevStep}/> :
+                        {this.state.showFemaleComponent ?
+                          <NewSingleFemaleBodyContent bodyTitle={this.state.bodyTitle} showOldFemaleComponent={this.state.showFemaleComponent} onClickFemalePrevStep={this.onClickFemalePrevStep} /> :
                           null
                         }
                       </div>
@@ -1292,16 +1292,16 @@ class NewCenterExcellence extends Component {
               <div id="tab1" className="tab">
                 <ul className="nav">
                   <li className="active"><a href="#tab1"><img src={male} alt="" /> Male</a></li>
-                  <li><a href="#tab2" className="border-red"><img src={female} alt="" /> Female</a></li> 
+                  <li><a href="#tab2" className="border-red"><img src={female} alt="" /> Female</a></li>
                 </ul>
                 <div className="text-areya">
-                  <div className="fullinner" style={{"backgroundImage": "url(https://www.fortishealthcare.com/revised/images/cs-bg.jpg)"}}>
+                  <div className="fullinner" style={{ "backgroundImage": "url(https://www.fortishealthcare.com/revised/images/cs-bg.jpg)" }}>
                     <div className="inner">
-                      <div className="row" style={{"maxWidth": "100%"}}>
+                      <div className="row" style={{ "maxWidth": "100%" }}>
                         {MaleBodySVGReactElement}
-                        { this.state.showMaleComponent 
+                        {this.state.showMaleComponent
                           ?
-                            <NewSingleMaleBodyContent/>
+                          <NewSingleMaleBodyContent />
                           :
                           null
                         }
@@ -1312,16 +1312,16 @@ class NewCenterExcellence extends Component {
               </div>
             </div>
             <Slider {...testimonial_settings}>
-              { this.state.testimonials.length > 0
+              {this.state.testimonials.length > 0
                 ?
-                  this.state.testimonials.map(testimonial =>{
-                    return(
-                      <div>
-                        <div className="row" id="saying">
-                          {/*<div className="col-sm-12 mb-4">
+                this.state.testimonials.map(testimonial => {
+                  return (
+                    <div>
+                      <div className="row" id="saying">
+                        {/*<div className="col-sm-12 mb-4">
                             <h2>{testimonial.testimonial_name}</h2>
                           </div>*/}
-                          {/*<div className="col-sm-3 text-center">
+                        {/*<div className="col-sm-3 text-center">
                             { testimonial.doctor_profile
                               ?
                                 <img src={IMAGE_URL+'/DoctorProfileImg/'+ testimonial.doctor_profile} alt="doc" style={{"border-radius": "110px"}}/>
@@ -1329,23 +1329,24 @@ class NewCenterExcellence extends Component {
                                 <img src="https://static.vecteezy.com/system/resources/thumbnails/003/337/584/small/default-avatar-photo-placeholder-profile-icon-vector.jpg" alt="doc" style={{"border-radius": "110px"}}/> 
                             }
                           </div>*/}
-                          <div className="col-sm-9">
-                            <div className="zubaida">
-                              <h3>{testimonial.author_name} {/*<span>(Cardiac Surgery)</span>*/}</h3>
-                              <h5>{testimonial.testimonial_name}</h5>
-                              {/*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>*/}
-                              <p className="text-chnage" dangerouslySetInnerHTML={{ __html: testimonial.testimonial_desc ? testimonial.testimonial_desc.substr(0, 150) : '' }}></p>
-                            </div>
+                        <div className="col-sm-9">
+                          <div className="zubaida" >
+
+                            <h3>{testimonial.author_name} {/*<span>(Cardiac Surgery)</span>*/}</h3>
+                            <h5>{testimonial.testimonial_name}</h5>
+                            {/*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</p>*/}
+                            <p className="text-chnage" dangerouslySetInnerHTML={{ __html: testimonial.testimonial_desc ? testimonial.testimonial_desc.substr(0, 150) : '' }}></p>
                           </div>
-                          <div className="col-sm-3 mt-5 settings-mt-0">
-                            <a href="/alltestimonials" className="see-more ">See More Patient Stories</a>
-                          </div>
-                        </div> 
-                      </div> 
-                    )
-                  })
+                        </div>
+                        <div className="col-sm-3 mt-5 settings-mt-0">
+                          <a href="/alltestimonials" className="see-more ">See More Patient Stories</a>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })
                 :
-                  ''
+                ''
               }
             </Slider>
           </div>

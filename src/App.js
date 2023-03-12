@@ -20,6 +20,7 @@ import ResetPassword from './component/ResetPassword';
 import Logout from './component/Logout';
 import appointments from './component/dashboard/appointments';
 import doctorportal from './component/dashboard/doctorportal';
+import emergency from './component/frontend/emergency';
 import patientoverview from './component/dashboard/patientoverview';
 import patientoverviewtwo from './component/dashboard/patientoverviewtwo';
 import patientportal from './component/dashboard/patientportal';
@@ -33,8 +34,6 @@ import adminregister from './component/adminregister';
 import cancel from './component/payment/cancel';
 import fail from './component/payment/fail';
 import success from './component/payment/success';
-
-
 import PopupPatientId from './component/frontend/PopupPatientId';
 import BriefHistory from './component/frontend/BriefHistory';
 import MissionStatement from './component/frontend/MissionStatement';
@@ -47,6 +46,7 @@ import singlepublication from './component/frontend/singlepublication';
 import singlepackage from './component/frontend/singlepackage';
 import testimonials from './component/frontend/testimonials';
 import DepartmentView from './component/frontend/DepartmentView';
+import DepartmentsView from './component/frontend/DepartmentsView';
 import StaticPages from './component/frontend/staticpages';
 
 const getStaticPages = () => {
@@ -107,6 +107,7 @@ class App extends Component {
               ''
           }*/}
           <Route path='/patientlists' component={patientlists} />
+          <Route path='/emergency' component={emergency} />
           <Route path='/cancel' component={cancel} />
           <Route path='/fail' component={fail} />
           <Route path='/success' component={success} />
@@ -125,6 +126,9 @@ class App extends Component {
           <Route path='/signup' component={register} />
           <Route path='/consultant/:name' component={DoctorProfile} />
           <Route path='/departments/:name' component={DepartmentView} />
+          <Route path='/department/:name' component={DepartmentView} />
+          <Route path='/departments' component={DepartmentsView} />
+          <Route path='/doctor/:name' component={DoctorProfile} />
           <Route path="/home" component={Home} />
           <Route path="/dashboard/patient-dashboard" component={patientoverview} />
           <Route path="/dashboard/appoinments" component={appointments} />

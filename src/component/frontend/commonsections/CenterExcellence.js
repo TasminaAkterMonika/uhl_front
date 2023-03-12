@@ -149,6 +149,7 @@ class CenterExcellence extends Component {
 
     };
     const testimonial_settings = {
+     
       dots: false,
       infinite: true,
       speed: 500,
@@ -163,6 +164,8 @@ class CenterExcellence extends Component {
             slidesToScroll: 1,
             infinite: true,
             dots: true
+            
+
           }
         },
         {
@@ -174,9 +177,11 @@ class CenterExcellence extends Component {
         },
         {
           breakpoint: 480,
+          
           settings: {
             slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToScroll: 1,
+            
           }
         }
       ]

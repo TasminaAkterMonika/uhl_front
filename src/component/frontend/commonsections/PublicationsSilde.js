@@ -3,6 +3,11 @@ import {API_TOKEN_NAME, IMAGE_URL} from '../../../constants';
 import { scAxiosAdmin } from '../../..';
 import potrait from '../../../images/potrait.webp';
 import Slider from "react-slick";
+import React, { Component } from 'react';
+import {API_TOKEN_NAME, IMAGE_URL} from '../../../constants';
+import { scAxiosAdmin } from '../../..';
+import potrait from '../../../images/potrait.webp';
+import Slider from "react-slick";
 
 const getPublications = () => {
   return new Promise((resolve, reject) => {

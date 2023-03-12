@@ -107,10 +107,10 @@ class PackageTwo extends Component {
     this.onChangePreExitingCondition(pageNumber);
   }
   refreshGetPackagesData = (page) => {
-    const data = {
-        page: page,
-    }
     /*const data = {
+        page: page,
+    }*/
+    const data = {
         next: page,
     }
     getAllPackagesLists(data)
@@ -123,8 +123,8 @@ class PackageTwo extends Component {
     })
     .catch(err => {
         console.log(err);
-    });*/
-    getPackagesLists(data)
+    });
+    /*getPackagesLists(data)
     .then(res => {
       if(res.status===true){
         var records = res.data.data;
@@ -144,7 +144,7 @@ class PackageTwo extends Component {
     })
     .catch(err => {
         console.log(err);
-    });
+    });*/
   }
 
   getAllPackagesLists
@@ -387,11 +387,10 @@ class PackageTwo extends Component {
                 { this.state.packages.length > 0
                   ?
                     this.state.packages.map(package_data => {
-                      //let package_price = package_data.IPDPrice;
-                      let package_price = package_data.amount;
+                      let package_price = package_data.IPDPrice;
                       let package_amount = parseFloat(package_price);
                       return(
-                        /*<div className="col-lg-4 col-md-12">
+                        <div className="col-lg-4 col-md-12">
                           <div className="doctor-list">
                             <div className="row">
                               <div className="col-5">
@@ -410,9 +409,9 @@ class PackageTwo extends Component {
                               </div>
                             </div>
                           </div>
-                        </div>*/
-                        <div className="col-lg-4 col-md-12 mt-4">
-                          <a href={'/packages/'+package_data.name} style={{"color":"#333", "textDecoration":"none"}}>
+                        </div>
+                        /*<div className="col-lg-4 col-md-12">
+                          <a href={'/singlepackage/'+package_data.name} style={{"color":"#333", "textDecoration":"none"}}>
                             <div className="doctor-list">
                               <div className="row">
                                 <div className="col-5">
@@ -425,13 +424,13 @@ class PackageTwo extends Component {
                                 </div>
                                 <div className="col-7">
                                   <h4>{package_data.name}</h4>
-                                  <p>BDT <br /> {package_amount ? package_amount.toFixed(2) : ''}</p>
+                                  <p>BDT <br /> {package_amount.toFixed(2)}</p>
                                   <p><b>More Information</b></p>
                                 </div>
                               </div>
                             </div>
                           </a>
-                        </div>
+                        </div>*/
                       )
                     })
                   :

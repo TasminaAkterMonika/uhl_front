@@ -12,7 +12,15 @@
     position: unset;
 }
 
+
+
+
+
 }
+
+
+
+
 @media (max-width:1199px) {
 .header-part div#navbarSupportedContent a { 
     font-size: 14px; 
@@ -27,6 +35,8 @@ button.dropdown-toggle.make-btn i {
 .our-recommendations .doctor-list h4 {
     font-size: 14px; 
 }
+ 
+
 }
 
 @media (max-width:1099px) {
@@ -92,9 +102,9 @@ button.dropdown-toggle.make-btn i {
 .footer-part h3 {
     font-size: 16px;
 }
-/*header#doctor-profile a.navbar-brand img {
+header#doctor-profile a.navbar-brand img {
     width: 75% !important;
-}*/
+}
 div#tab-mob {
     padding-left: 0 !important;
 }
