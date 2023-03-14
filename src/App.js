@@ -124,7 +124,7 @@ class App extends Component {
           <Route path='/alltestimonials' component={testimonials} />
           <Route path={LOGIN_PAGE_PATH} component={Login} />
           <Route path='/signup' component={register} />
-          <Route path='/consultant/:name' component={DoctorProfile} />
+           {/*<Route path='/doctor/:name' component={DoctorProfile} />*/}
           <Route path='/departments/:name' component={DepartmentView} />
           <Route path='/department/:name' component={DepartmentView} />
           <Route path='/departments' component={DepartmentsView} />

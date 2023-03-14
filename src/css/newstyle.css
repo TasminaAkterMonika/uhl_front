@@ -62,11 +62,11 @@ img{max-width: 100%;}
 }
 .banner-part {
     /*background-image: url('../images/banner-profile-1.png');*/
-    background-image: url('../images/banner-profile-1.jpeg');
+    background-image: url('../images/background.png');
     padding: 0 0 0 0;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: bottom;
+    background-position: revert;
     height: 100vh;
 }
 .header-part div#navbarSupportedContent a {

@@ -96,24 +96,24 @@ class Dashboard extends React.Component {
             userlink = <div>
                         <Route/>
                         <Switch>
-                            <PrivateRoute path='/headerannoucement' component={headerannoucement} user={this.props.user} exact />
+                            <PrivateRoute path='/admin/headerannoucement' component={headerannoucement} user={this.props.user} exact />
                             <PrivateRoute path='/editheaderannoucement/:id' component={editheaderannoucement} user={this.props.user} exact />
                             <PrivateRoute path='/addheaderannoucement' component={addheaderannoucement} user={this.props.user} exact />
                             <PrivateRoute path='/editbannerbuttonlink/:id' component={editbannerbuttonlink} user={this.props.user} exact />
                             <PrivateRoute path='/addbannerbuttonlink' component={addbannerbuttonlink} user={this.props.user} exact />
-                            <PrivateRoute path='/bannerbuttonlink' component={bannerbuttonlink} user={this.props.user} exact />
-                            <PrivateRoute path='/staticpages' component={staticpages} user={this.props.user} exact />
+                            <PrivateRoute path='/admin/bannerbuttonlink' component={bannerbuttonlink} user={this.props.user} exact />
+                            <PrivateRoute path='/admin/staticpages' component={staticpages} user={this.props.user} exact />
                             <PrivateRoute path='/addstaticpage' component={addstaticpage} user={this.props.user} exact />
                             <PrivateRoute path='/editpage/:id' component={editpage} user={this.props.user} exact />
                             <PrivateRoute path='/page/:id' component={page} user={this.props.user} exact />
-                            <PrivateRoute path='/menu' component={menu} user={this.props.user} exact />
+                            <PrivateRoute path='/admin/menu' component={menu} user={this.props.user} exact />
                             <PrivateRoute path='/addmenu' component={addmenu} user={this.props.user} exact />
                             <PrivateRoute path='/editmenu/:id' component={editmenu} user={this.props.user} exact />
-                            <PrivateRoute path='/packages' component={packages} user={this.props.user} exact />
+                            <PrivateRoute path='/admin/packages' component={packages} user={this.props.user} exact />
                             <PrivateRoute path='/addpackage' component={addpackage} user={this.props.user} exact />
                             <PrivateRoute path='/editpackage/:id' component={editpackage} user={this.props.user} exact />
                             <PrivateRoute path='/viewpackage/:id' component={PackageView} user={this.props.user} exact />
-                            <PrivateRoute path='/body-links' component={BodyLinkDept} user={this.props.user} exact/>
+                            <PrivateRoute path='/admin/body-links' component={BodyLinkDept} user={this.props.user} exact/>
                             <PrivateRoute path='/addbodylink' component={addbodylink} user={this.props.user} exact />
                             <PrivateRoute path='/editbodylink/:id' component={EditBodyLink} user={this.props.user} exact />
                             {/*<PrivateRoute path='/viewbodylink/:id' component={ViewBodyLink} user={this.props.user} exact />*/}
@@ -124,20 +124,20 @@ class Dashboard extends React.Component {
                             <PrivateRoute path='/viewpublication/:id' component={publicationView} user={this.props.user} exact />
                             <PrivateRoute path='/edittestimonial/:id' component={edittestimonial} user={this.props.user} exact />
                             <PrivateRoute path='/addtestimonial' component={addtestimonial} user={this.props.user} exact />
-                            <PrivateRoute path='/testimonials' component={testimonials} user={this.props.user} exact />
+                            <PrivateRoute path='/admin/testimonials' component={testimonials} user={this.props.user} exact />
                             <PrivateRoute path='/addpublication' component={addpublication} user={this.props.user} exact />
                             <PrivateRoute path='/editpublication/:id' component={editpublication} user={this.props.user} exact />
-                            <PrivateRoute path='/publications' component={publications} user={this.props.user} exact />
+                            <PrivateRoute path='/admin/publications' component={publications} user={this.props.user} exact />
                             <PrivateRoute path='/editdepartment/:id' component={editdepartment} user={this.props.user} exact />
                             <PrivateRoute path='/adddepartment' component={adddepartment} user={this.props.user} exact />
-                            <PrivateRoute path='/departments' component={departments} user={this.props.user} exact />
+                            <PrivateRoute path='/admin/departments' component={departments} user={this.props.user} exact />
                             <PrivateRoute path='/editdoctor/:id' component={editdoctor} user={this.props.user} exact />
                             <PrivateRoute path='/adddoctor' component={adddoctor} user={this.props.user} exact />
-                            <PrivateRoute path='/doctors' component={doctors} user={this.props.user} exact />
+                            <PrivateRoute path='/admin/doctors' component={doctors} user={this.props.user} exact />
                             {/*<PrivateRoute path='/addnewsevents' component={addnewsevents} user={this.props.user} exact />*/}
                             <PrivateRoute path='/editnewsevent/:id' component={editnewsevent} user={this.props.user} exact />
                             <PrivateRoute path='/addnewsevent' component={addnewsevent} user={this.props.user} exact />
-                            <PrivateRoute path='/newsevents' component={newsevents} user={this.props.user} exact />
+                            <PrivateRoute path='/admin/newsevents' component={newsevents} user={this.props.user} exact />
                             <PrivateRoute path='/admindashboard' component={admindashboard} user={this.props.user} exact />
                             <Redirect to="/admindashboard" />
                         </Switch>

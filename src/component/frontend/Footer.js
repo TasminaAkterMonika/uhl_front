@@ -54,8 +54,10 @@ class Footer extends Component {
               </div>
             </div>
             <div className="col-sm-3">
+
               <p><a href="/terms-conditions">Terms &amp; Conditions</a></p>
               <p><a href="/privacy-policy">Privacy Policy</a></p>
+              <p><a href="https://www.jointcommission.org/">Joint Commission </a></p>
               <p><a href="/declaration">Disclaimer </a></p>
               <p><a href="#">Sitemap </a></p>
               <p><a href="#">Webmail</a></p>

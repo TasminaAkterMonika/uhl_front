@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { scAxios, scAxiosSMS, scAxiosAdmin } from '../..';
-import {USER_ID} from '../../constants';
+import { USER_ID } from '../../constants';
 import { startUserSession } from '../../userSession';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import uhlcare_logo from '../../images/uhlcare-logo.webp';
-import uhl_logo from '../../images/uhl-logo.webp';
+import uhl_logo from '../../images/UHL (2).webp';
 import medix_logo from '../../images/medix-logo.webp';
+import mainlogo from '../../images/main-logo.webp';
+import ma_rashed_logo from '../../images/ma rashed hospital.webp';
 import PopupRegister from '../../component/frontend/PopupRegister';
+
 import PopupIndex2 from '../../component/frontend/PopupIndex2';
 import $ from 'jquery';
 
@@ -31,7 +34,7 @@ const SendOTPMessage = (data) => {
     const req = scAxiosSMS.request('/user/sendotp', {
       method: 'post',
       headers: {
-          'Accept': 'application/json',
+        'Accept': 'application/json',
       },
       params: {
         ...data
@@ -46,7 +49,7 @@ const SaveOTPNumber = (data) => {
     const req = scAxiosAdmin.request('/user/saveotpnumber', {
       method: 'post',
       headers: {
-          'Accept': 'application/json',
+        'Accept': 'application/json',
       },
       params: {
         ...data
@@ -61,7 +64,7 @@ const getOtpData = (data) => {
     const req = scAxiosAdmin.request('/user/getotpdata', {
       method: 'get',
       headers: {
-          'Accept': 'application/json',
+        'Accept': 'application/json',
       },
       params: {
         ...data
@@ -76,7 +79,7 @@ const ResetOtpData = (data) => {
     const req = scAxiosAdmin.request('/user/resetotpdata', {
       method: 'post',
       headers: {
-          'Accept': 'application/json',
+        'Accept': 'application/json',
       },
       params: {
         ...data
@@ -91,14 +94,14 @@ const LoginPatient = (data) => {
     const req = scAxios.request('/mmlogin', {
       method: 'post',
       headers: {
-          'Accept': 'application/json',
+        'Accept': 'application/json',
       },
       params: {
-          ...data
-      }  
+        ...data
+      }
     });
     req.then(res => resolve(res.data))
-        .catch(err => reject(err));
+      .catch(err => reject(err));
   });
 }
 const LoginPatientIdCheck = (data) => {
@@ -106,14 +109,14 @@ const LoginPatientIdCheck = (data) => {
     const req = scAxiosAdmin.request('/checkuserpatientid', {
       method: 'post',
       headers: {
-          'Accept': 'application/json',
+        'Accept': 'application/json',
       },
       params: {
-          ...data
-      }  
+        ...data
+      }
     });
     req.then(res => resolve(res.data))
-        .catch(err => reject(err));
+      .catch(err => reject(err));
   });
 }
 const PatitentDetails = (data) => {
@@ -121,23 +124,23 @@ const PatitentDetails = (data) => {
     const req = scAxios.request('/patients', {
       method: 'get',
       headers: {
-          'Accept': 'application/json',
+        'Accept': 'application/json',
       },
       params: {
-          ...data
-      }  
+        ...data
+      }
     });
     req.then(res => resolve(res.data))
-        .catch(err => reject(err));
+      .catch(err => reject(err));
   });
 }
 const activateaccount = (url) => {
   return new Promise((resolve, reject) => {
-      const req = scAxiosAdmin.request(url, {
-          method: 'post',
-      });
-      req.then(res => resolve(res.data))
-          .catch(err => reject(err));
+    const req = scAxiosAdmin.request(url, {
+      method: 'post',
+    });
+    req.then(res => resolve(res.data))
+      .catch(err => reject(err));
   });
 }
 const alertStyle = {
@@ -148,23 +151,23 @@ class PopupIndex4 extends Component {
     fields: {},
     errors: {},
     patient_id: '',
-    password:'',
+    password: '',
     phone_number: '',
     user_token: '',
-    otp:'',
+    otp: '',
     enableLoginBtn: false,
     signin_success: false,
     user_active: false,
-    first_otp:'',
-    second_otp:'',
-    third_otp:'',
-    fourth_otp:'',
-    fifth_otp:'',
-    sixth_otp:'',
-    final_otp:'',
-    otp_number:'',
-    showRegisterPopup:false,
-    showPopup:false,
+    first_otp: '',
+    second_otp: '',
+    third_otp: '',
+    fourth_otp: '',
+    fifth_otp: '',
+    sixth_otp: '',
+    final_otp: '',
+    otp_number: '',
+    showRegisterPopup: false,
+    showPopup: false,
     showDoctorListPopup: false,
   };
   /*validateForm() {
@@ -259,42 +262,42 @@ class PopupIndex4 extends Component {
         fields
     }, () => this.validateForm());*/
     this.setState({
-        [event.target.name]: event.target.value
+      [event.target.name]: event.target.value
     });
   }
-  onKeyUpMoveInputfocus = event =>{
+  onKeyUpMoveInputfocus = event => {
     if (event.target.value.length === event.target.maxLength) {
       var $next = $(event.target).next('.otp_input');
-      if ($next.length){
+      if ($next.length) {
         $(event.target).next('.otp_input').focus();
       } else {
         $(event.target).blur();
       }
     }
   }
-  sendOtp = event =>{
+  sendOtp = event => {
     $('.otp_resend').show();
     //let six_digit_random_number = Math.floor(100000 + Math.random() * 999999);
-    let six_digit_random_number = Math.floor(Math.random()*900000) + 100000;
+    let six_digit_random_number = Math.floor(Math.random() * 900000) + 100000;
     var encoded_otp = "";
     var otp_number = btoa(six_digit_random_number);
-    for (let i=0; i<otp_number.length;i++) {
+    for (let i = 0; i < otp_number.length; i++) {
       var a = otp_number.charCodeAt(i);
       var b = a ^ 10;
       encoded_otp += String.fromCharCode(b);
     }
     var new_encoded_otp = btoa(encoded_otp);
-    
-    let messageBody = "Your Login OTP is "+six_digit_random_number;
+
+    let messageBody = "Your Login OTP is " + six_digit_random_number;
     var encoded = "";
     var messageBodyText = btoa(messageBody);
-    for (let i=0; i<messageBodyText.length;i++) {
+    for (let i = 0; i < messageBodyText.length; i++) {
       var c = messageBodyText.charCodeAt(i);
       var d = c ^ 10;
       encoded += String.fromCharCode(d);
     }
     var encoded_message_body = btoa(encoded);
-    let csms_generate_number = Math.random().toString(36).substring(2,11);
+    let csms_generate_number = Math.random().toString(36).substring(2, 11);
     let csmsId = csms_generate_number;
     const data = {
       phone_number: this.state.phone_number,
@@ -303,7 +306,7 @@ class PopupIndex4 extends Component {
     }
     SendOTPMessage(data)
       .then(res => {
-        if(res.status === 'SUCCESS'){
+        if (res.status === 'SUCCESS') {
           this.saveOtp(new_encoded_otp);
           toast.success('OTP sent to your phone number!', {
             position: toast.POSITION.TOP_LEFT
@@ -321,29 +324,29 @@ class PopupIndex4 extends Component {
         });
       });
   }
-  ResendOtp = event =>{
+  ResendOtp = event => {
     $('.otp_resend').hide();
     //let six_digit_random_number = Math.floor(100000 + Math.random() * 999999);
-    let six_digit_random_number = Math.floor(Math.random()*900000) + 100000;
+    let six_digit_random_number = Math.floor(Math.random() * 900000) + 100000;
     var encoded_otp = "";
     var otp_number = btoa(six_digit_random_number);
-    for (let i=0; i<otp_number.length;i++) {
+    for (let i = 0; i < otp_number.length; i++) {
       var a = otp_number.charCodeAt(i);
       var b = a ^ 10;
       encoded_otp += String.fromCharCode(b);
     }
     var new_encoded_otp = btoa(encoded_otp);
 
-    let messageBody = "Your Login OTP is "+six_digit_random_number;
+    let messageBody = "Your Login OTP is " + six_digit_random_number;
     var encoded = "";
     var messageBodyText = btoa(messageBody);
-    for (let i=0; i<messageBodyText.length;i++) {
+    for (let i = 0; i < messageBodyText.length; i++) {
       var c = messageBodyText.charCodeAt(i);
       var d = c ^ 10;
       encoded += String.fromCharCode(d);
     }
     var encoded_message_body = btoa(encoded);
-    let csms_generate_number = Math.random().toString(36).substring(2,11);
+    let csms_generate_number = Math.random().toString(36).substring(2, 11);
     let csmsId = csms_generate_number;
     const data = {
       phone_number: this.state.phone_number,
@@ -351,36 +354,36 @@ class PopupIndex4 extends Component {
       csms_id: csmsId
     }
     SendOTPMessage(data)
-    .then(res => {
-      if(res.status === 'SUCCESS'){
-        this.saveOtp(new_encoded_otp);
-        toast.success('OTP sent to your phone number!', {
-          position: toast.POSITION.TOP_LEFT
-        });
+      .then(res => {
+        if (res.status === 'SUCCESS') {
+          this.saveOtp(new_encoded_otp);
+          toast.success('OTP sent to your phone number!', {
+            position: toast.POSITION.TOP_LEFT
+          });
 
-      } else {
-        toast.error('Otp not send', {
+        } else {
+          toast.error('Otp not send', {
+            position: toast.POSITION.TOP_LEFT
+          });
+        }
+      })
+      .catch(err => {
+        toast.error('Error occured', {
           position: toast.POSITION.TOP_LEFT
         });
-      }
-    })
-    .catch(err => {
-      toast.error('Error occured', {
-        position: toast.POSITION.TOP_LEFT
       });
-    });
   }
-  saveOtp = (otp) =>{
+  saveOtp = (otp) => {
     const data = {
       phone_number: this.state.phone_number,
       otp_number: otp
     }
     SaveOTPNumber(data)
       .then(res => {
-        if(res.data === 'success'){
+        if (res.data === 'success') {
 
         } else {
-          
+
         }
       })
       .catch(err => {
@@ -393,53 +396,53 @@ class PopupIndex4 extends Component {
     event.preventDefault();
     let patient_id = this.state.patient_id;
     let password = this.state.password;
-    if(patient_id){
-        this.LoginPaitentId(patient_id, password);
+    if (patient_id) {
+      this.LoginPaitentId(patient_id, password);
     } else {
       if (this.validateForm()) {
         let fields = {};
         fields["phone_number"] = "";
         this.setState({ fields: fields });
         const user = {
-            PhoneNumber: this.state.fields.phone_number,
+          PhoneNumber: this.state.fields.phone_number,
         }
         loginUser(user)
-        .then(res => {
-          if(res.length > 1){
-            let token = '';
-            let user_role = '2';
-            let user_email = '';
-            let phone_number = this.state.phone_number;
-            let search_selected_doc_id = '';
-            let patientid = '';
-            let schedule_date = '';
-            let apointment_id = '';
-            let doctor_name = '';
-            let doctor_fees = '';
-            let patientName = '';
-            let schedule_time = '';
-            let search_selected_doc_name = '';
-            let doctor_profile_avability = this.props.doctorProfilePageClick;
-            startUserSession(token, user_role, user_email, patientid, phone_number, search_selected_doc_id, schedule_date, apointment_id, doctor_name, doctor_fees, patientName, schedule_time, search_selected_doc_name, doctor_profile_avability);
-            this.props.nextStep();
-          } else {
-            let patient_id = res[0].PatientID;
-            let patient_name = res[0].PatientName;
-            let phone_number = this.state.phone_number;
-            const data = {
-              patientid: patient_id,
+          .then(res => {
+            if (res.length > 1) {
+              let token = '';
+              let user_role = '2';
+              let user_email = '';
+              let phone_number = this.state.phone_number;
+              let search_selected_doc_id = '';
+              let patientid = '';
+              let schedule_date = '';
+              let apointment_id = '';
+              let doctor_name = '';
+              let doctor_fees = '';
+              let patientName = '';
+              let schedule_time = '';
+              let search_selected_doc_name = '';
+              let doctor_profile_avability = this.props.doctorProfilePageClick;
+              startUserSession(token, user_role, user_email, patientid, phone_number, search_selected_doc_id, schedule_date, apointment_id, doctor_name, doctor_fees, patientName, schedule_time, search_selected_doc_name, doctor_profile_avability);
+              this.props.nextStep();
+            } else {
+              let patient_id = res[0].PatientID;
+              let patient_name = res[0].PatientName;
+              let phone_number = this.state.phone_number;
+              const data = {
+                patientid: patient_id,
+              }
+              this.PatientLoginSubmit(data, phone_number, patient_name);
             }
-            this.PatientLoginSubmit(data, phone_number, patient_name);
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
+          })
+          .catch(err => {
+            console.log(err);
+          });
       } else {
       }
     }
   }
-  LoginPaitentId = (patient_id, password) =>{
+  LoginPaitentId = (patient_id, password) => {
     let login_phone_number = '';
     let search_selected_doc_id = '';
     let schedule_date = '';
@@ -455,57 +458,57 @@ class PopupIndex4 extends Component {
       password: password
     }
     LoginPatientIdCheck(data)
-    .then(res => {
-      if(res.status == true){
-        if(res.data.patient_id == '' || res.data.patient_id == null){
-          window.location.href = '/popuppatientid?userid='+res.data.id;
-        } else {
-          const data = {
-            patientid: res.data.patient_id,
-          }
-          LoginPatient(data)
-          .then(res => {
+      .then(res => {
+        if (res.status == true) {
+          if (res.data.patient_id == '' || res.data.patient_id == null) {
+            window.location.href = '/popuppatientid?userid=' + res.data.id;
+          } else {
             const data = {
-              patient: res[0]['pid'],
+              patientid: res.data.patient_id,
             }
-            let token = '';
-            let user_role = '2';
-            let user_email = '';
-            PatitentDetails(data)
-            .then(patient_details_res => {
-              let token = '';
-              let user_role = '2';
-              let user_email = '';
-              let login_phone_number = patient_details_res[0].patient_phone;
-              let search_selected_doc_id = '';
-              let schedule_date = '';
-              let apointment_id = '';
-              let doctor_name = '';
-              let doctor_fees = '';
-              let patientName = patient_details_res[0].patient_name;
-              let schedule_time = '';
-              let search_selected_doc_name = '';
-              let doctor_profile_avability = '';
-              startUserSession(token, user_role, user_email, res[0]['pid'], login_phone_number, search_selected_doc_id, schedule_date, apointment_id, doctor_name, doctor_fees, patientName, schedule_time, search_selected_doc_name, doctor_profile_avability);
-              //window.location.href = '/dashboard/patient-dashboard';
-              this.props.nextStep();
-            })
-            .catch(err => {
-              console.log(err);
-            });
-            startUserSession(token, user_role, user_email, patient_id, login_phone_number, search_selected_doc_id, schedule_date, apointment_id, doctor_name, doctor_fees, patientName, schedule_time, search_selected_doc_name, doctor_profile_avability);
-            this.setState({ signin_success: true});
-            //this.props.nextStep();
-          })
-          .catch(err => {
-            console.log(err);
-          });
+            LoginPatient(data)
+              .then(res => {
+                const data = {
+                  patient: res[0]['pid'],
+                }
+                let token = '';
+                let user_role = '2';
+                let user_email = '';
+                PatitentDetails(data)
+                  .then(patient_details_res => {
+                    let token = '';
+                    let user_role = '2';
+                    let user_email = '';
+                    let login_phone_number = patient_details_res[0].patient_phone;
+                    let search_selected_doc_id = '';
+                    let schedule_date = '';
+                    let apointment_id = '';
+                    let doctor_name = '';
+                    let doctor_fees = '';
+                    let patientName = patient_details_res[0].patient_name;
+                    let schedule_time = '';
+                    let search_selected_doc_name = '';
+                    let doctor_profile_avability = '';
+                    startUserSession(token, user_role, user_email, res[0]['pid'], login_phone_number, search_selected_doc_id, schedule_date, apointment_id, doctor_name, doctor_fees, patientName, schedule_time, search_selected_doc_name, doctor_profile_avability);
+                    //window.location.href = '/dashboard/patient-dashboard';
+                    this.props.nextStep();
+                  })
+                  .catch(err => {
+                    console.log(err);
+                  });
+                startUserSession(token, user_role, user_email, patient_id, login_phone_number, search_selected_doc_id, schedule_date, apointment_id, doctor_name, doctor_fees, patientName, schedule_time, search_selected_doc_name, doctor_profile_avability);
+                this.setState({ signin_success: true });
+                //this.props.nextStep();
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          }
         }
-      }
-    })
-    .catch(err => {
-      console.log(err);
-    });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
   PatientLoginSubmit = (data, phone_number, patient_name) => {
     let user_role = '2';
@@ -521,69 +524,69 @@ class PopupIndex4 extends Component {
     let search_selected_doc_name = '';
     let doctor_profile_avability = this.props.doctorProfilePageClick;
     LoginPatient(data)
-    .then(res => {
-      if (!!res[0].token) {
-        startUserSession(res[0].token, user_role, user_email, data.patientid, login_phone_number, search_selected_doc_id, schedule_date, apointment_id, doctor_name, doctor_fees, patientName, schedule_time, search_selected_doc_name, doctor_profile_avability);
-        this.setState({ signin_success: true});
-        this.refreshResetOTPData();
-        this.props.nextStep();
-      } else {
-        toast.error(res.message, {
-          position: toast.POSITION.TOP_LEFT
-        });
-      }
-    })
-    .catch(err => {
-      console.log(err);
-    });
+      .then(res => {
+        if (!!res[0].token) {
+          startUserSession(res[0].token, user_role, user_email, data.patientid, login_phone_number, search_selected_doc_id, schedule_date, apointment_id, doctor_name, doctor_fees, patientName, schedule_time, search_selected_doc_name, doctor_profile_avability);
+          this.setState({ signin_success: true });
+          this.refreshResetOTPData();
+          this.props.nextStep();
+        } else {
+          toast.error(res.message, {
+            position: toast.POSITION.TOP_LEFT
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
   refreshGetOTPData = (event) => {
-    const data ={
+    const data = {
       phone_number: this.state.phone_number,
     }
     getOtpData(data)
-    .then(res =>{
-      if(res.status === true){
-        this.setState({otp_number: res.data.otp});
-        if(this.state.final_otp === res.data.otp || this.state.final_otp === '111111'){
-          document.getElementById("black-btn").disabled = false;
-          document.getElementById("black-btn").style.background = "#fb6201";
+      .then(res => {
+        if (res.status === true) {
+          this.setState({ otp_number: res.data.otp });
+          if (this.state.final_otp === res.data.otp || this.state.final_otp === '111111') {
+            document.getElementById("black-btn").disabled = false;
+            document.getElementById("black-btn").style.background = "#fb6201";
+          } else {
+            document.getElementById("black-btn").disabled = true;
+            document.getElementById("black-btn").style.background = "#41414b";
+            $('#otp_error').text('');
+          }
         } else {
-          document.getElementById("black-btn").disabled = true;
-          document.getElementById("black-btn").style.background = "#41414b";
-          $('#otp_error').text('');
+          toast.error('otp data not found', {
+            position: toast.POSITION.TOP_LEFT
+          });
         }
-      } else {
-        toast.error('otp data not found', {
+      })
+      .catch(err => {
+        toast.error('Error occured', {
           position: toast.POSITION.TOP_LEFT
         });
-      }
-    })
-    .catch(err => {
-      toast.error('Error occured', {
-        position: toast.POSITION.TOP_LEFT
       });
-    });
   }
   refreshResetOTPData = (event) => {
-    const data ={
+    const data = {
       phone_number: this.state.phone_number,
     }
     ResetOtpData(data)
-    .then(res =>{
-      if(res.status === true){
-        
-      } else {
-        
-      }
-    })
-    .catch(err => {
-      toast.error('Error occured', {
-        position: toast.POSITION.TOP_LEFT
+      .then(res => {
+        if (res.status === true) {
+
+        } else {
+
+        }
+      })
+      .catch(err => {
+        toast.error('Error occured', {
+          position: toast.POSITION.TOP_LEFT
+        });
       });
-    });
   }
-  ShowRegisterPopup = (e) =>{
+  ShowRegisterPopup = (e) => {
     $(".login_popup").css("visibility", 'hidden');
     $(".login_popup").removeClass('show');
     $(".register_popup").css("visibility", 'visible');
@@ -602,68 +605,75 @@ class PopupIndex4 extends Component {
     $("body").css("overflow", "");
     $("body").css("padding-right", "");
   }
-  componentDidMount(){
+  componentDidMount() {
     let search = window.location.search;
     let params = new URLSearchParams(search);
     let update_success = params.get('update_success');
     let active_code = params.get('active_code');
-    if(update_success){
+    if (update_success) {
       $('.login_popup').addClass("show");
     }
-    if(active_code){
+    if (active_code) {
       //var CHK_USER_ID = localStorage.getItem(USER_ID);
       $('.login_popup').addClass("show");
-      var url = '/account/activation/'+active_code;
+      var url = '/account/activation/' + active_code;
       activateaccount(url, active_code)
-      .then(res => {
-         if (res.status==true) {
-              toast.success(res.message, {
-                position: toast.POSITION.BOTTOM_RIGHT
+        .then(res => {
+          if (res.status == true) {
+            toast.success(res.message, {
+              position: toast.POSITION.BOTTOM_RIGHT
+            });
+            /*if(CHK_USER_ID==null) {
+              window.location.href = '/login';
+            } else {
+              this.setState({
+                signin_success: true,
               });
-              /*if(CHK_USER_ID==null) {
-                window.location.href = '/login';
-              } else {
-                this.setState({
-                  signin_success: true,
-                });
-              }*/
-         } else {
-              toast.error(res.message, {
-                position: toast.POSITION.BOTTOM_RIGHT
-              });
-         }
+            }*/
+          } else {
+            toast.error(res.message, {
+              position: toast.POSITION.BOTTOM_RIGHT
+            });
+          }
         })
-      .catch(err => {
+        .catch(err => {
           console.log(err);
-      });
+        });
     }
   }
   render() {
-    return(
+    return (
       <div>
-        <div className="offcanvas offcanvas-start login_popup" tabIndex={-1} id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style={{"visibility":"visible"}}>
+        <div className="offcanvas offcanvas-start login_popup" tabIndex={-1} id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style={{ "visibility": "visible" }}>
           <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="offcanvasExampleLabel"> </h5>
             <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" onClick={this.closePopup} />
           </div>
           <div className="offcanvas-body">
-            <div className="row text-center" id="logos">
-              <div className="col-4">
+            <div className="row d-flex justify-content-around" id="logos">
+              <div className="col-2 ">
                 <img src={uhlcare_logo} alt="uhlcare-logo" />
               </div>
-              <div className="col-4">
+              <div className="col-2">
+              <img src={mainlogo} alt="medix-logo" />
+            </div>
+              <div className="col-2">
                 <img src={uhl_logo} alt="uhl-logo" />
               </div>
-              <div className="col-4">
+              <div className="col-2">
                 <img src={medix_logo} alt="medix-logo" />
+              </div>
+           
+              <div className="col-2">
+                <img src={ma_rashed_logo} alt="medix-logo" />
               </div>
             </div>
             <div className="left-offcanvas">
-              <h4>Login / Register to <br /> Book Your <br /> Appointment</h4> 
+              <h4>Login / Register to <br /> Book Your <br /> Appointment</h4>
               <form onSubmit={this.handleSubmit} id="loginform" className="needs-validation" noValidate>
                 <input placeholder="Enter Patient I.D (Optional)/Username" type="text" id="patient_id" name="patient_id" value={this.state.fields.patient_id} onChange={this.handleChange} autoComplete="off" className="form-control" />
                 <div className="input-group mt-3">
-                  <input type="password" className="form-control" placeholder="Enter Password" name="password" id="password" value={this.state.fields.password} onChange={this.handleChange} required autoComplete="off"/>
+                  <input type="password" className="form-control" placeholder="Enter Password" name="password" id="password" value={this.state.fields.password} onChange={this.handleChange} required autoComplete="off" />
                 </div>
                 {/*<div className="input-group mt-3">
                   <input type="text" className="form-control" placeholder="Enter Phone Number" name="phone_number" id="phone_number" value={this.state.fields.phone_number} onChange={this.handleChange} required autoComplete="off" maxLength="11"/>
@@ -683,23 +693,23 @@ class PopupIndex4 extends Component {
                 <div className="row mt-3">
                   <div className="col-12">
                     <button type="submit" className="btn-links appointment-new" id="black-btn"> Login </button>
-                  </div> 
-                </div> 
-                <p><label className="dont">Don't have a patient I.D? <br /><a className="nav-link active" onClick={this.ShowRegisterPopup} style={{"background": "none", "border": "none", "padding": "0px", "color": "rgb(251, 98, 1)"}} data-bs-dismiss="offcanvas" aria-label="Close">Register here.</a></label></p>
+                  </div>
+                </div>
+                <p><label className="dont">Don't have a patient I.D? <br /><a className="nav-link active" onClick={this.ShowRegisterPopup} style={{ "background": "none", "border": "none", "padding": "0px", "color": "rgb(251, 98, 1)" }} data-bs-dismiss="offcanvas" aria-label="Close">Register here.</a></label></p>
               </form>
             </div>
           </div>
         </div>
         {
           this.state.showRegisterPopup
-          ?
-            <PopupRegister showPopup={this.state.showRegisterPopup}/>
-          :
+            ?
+            <PopupRegister showPopup={this.state.showRegisterPopup} />
+            :
             null
         }
         <ToastContainer autoClose={5000} />
       </div>
     )
-  } 
+  }
 }
 export default PopupIndex4;

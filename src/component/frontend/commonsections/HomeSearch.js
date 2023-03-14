@@ -140,7 +140,7 @@ class HomeSearch extends Component {
   render() {
     return (
       <div>
-        <h1 data-aos="fade-up" data-aos-duration="1000">On a Mission To Keep Families Healthy</h1>
+        <h1 data-aos="fade-up" data-aos-duration="1000" style={{ "color": "black", "text-align": "center" }}>On a Mission To Keep Families Healthy</h1>
         <div className="center-search mt-4" data-aos="fade-up" data-aos-duration="1000" style={{ "position": "relative", "zIndex": "999" }}>
           <form className="d-flex">
             <div className="input-group mb-3 home_search_input_section">
@@ -162,7 +162,7 @@ class HomeSearch extends Component {
                         return (
                           <div className="col-lg-4 col-md-12 mt-4">
                             <div className="doctor-list">
-                              <a href={SITE_URL + '/consultant/' + new_doctor_name + '~' + default_search_doctor.id} style={{ "textDecoration": "none", "color": "#212529" }}>
+                              <a href={SITE_URL + '/doctor/' + new_doctor_name + '~' + default_search_doctor.id} style={{ "textDecoration": "none", "color": "#212529" }}>
                                 <div className="row">
                                   <div className="col-5">
                                     {default_search_doctor.doctor_profile

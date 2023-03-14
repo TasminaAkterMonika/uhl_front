@@ -9213,6 +9213,9 @@ ul.update_list li {
     left: 50%;
     width: 260px;
   }
+  .navbar-brand > img {
+    height: 70px;
+  }
 }
 
 @media (max-width: 359px) {
@@ -9308,6 +9311,9 @@ ul.update_list li {
     background-color: transparent;
     margin-left: -15px;
     margin-right: -15px;
+  }
+  .navbar-brand > img {
+    height: 70px;
   }
 }
 

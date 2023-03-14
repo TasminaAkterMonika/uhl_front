@@ -308,6 +308,7 @@ ul.blood-report li.view-all a{
 .doctor-list .row {
     margin-right: 0;
     margin-left: 0;
+    text-align: center;
 }
 .doctor-list img {
     border-radius: 0;
